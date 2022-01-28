@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofstockExercise", "RoofstockExercise\RoofstockExercise.csproj", "{54F28138-9C3A-4236-8525-5DCB98DB5961}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PropertyDb", "PropertyDb\PropertyDb.sqlproj", "{837237B8-C04E-4752-BED8-98CDE6614EEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54F28138-9C3A-4236-8525-5DCB98DB5961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F28138-9C3A-4236-8525-5DCB98DB5961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F28138-9C3A-4236-8525-5DCB98DB5961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F28138-9C3A-4236-8525-5DCB98DB5961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{837237B8-C04E-4752-BED8-98CDE6614EEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{837237B8-C04E-4752-BED8-98CDE6614EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{837237B8-C04E-4752-BED8-98CDE6614EEE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{837237B8-C04E-4752-BED8-98CDE6614EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{837237B8-C04E-4752-BED8-98CDE6614EEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{837237B8-C04E-4752-BED8-98CDE6614EEE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {996BF030-B0FE-46E6-A99E-B5DEB1BA7E56}
+	EndGlobalSection
+EndGlobal
