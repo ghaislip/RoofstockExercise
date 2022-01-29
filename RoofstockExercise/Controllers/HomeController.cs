@@ -8,6 +8,7 @@ namespace RoofstockExercise.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private List<PropertyListing>? Listings;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -17,9 +18,8 @@ namespace RoofstockExercise.Controllers
         public IActionResult Index()
         {
             var properties = GetProperties();
-            var listings = ConvertToListings(properties);
-            //ViewData["listings"] = listings;
-            return View(listings);
+            Listings = ConvertToListings(properties);
+            return View(Listings);
         }
 
         public IActionResult Privacy()
@@ -31,6 +31,19 @@ namespace RoofstockExercise.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        [ActionName("SaveListing")]
+        public IActionResult Index(PropertyListing listing)
+        {
+            Console.WriteLine("TEST");
+            Console.WriteLine(listing.YearBuilt);
+            Console.WriteLine(listing.Address?.Address1);
+            Console.WriteLine(listing.ListPrice);
+            Console.WriteLine(listing.MonthlyRent);
+            Console.WriteLine(listing.GrossYield);
+            return RedirectToAction("Index");
         }
 
         private static async Task<Properties?> GetProperties()

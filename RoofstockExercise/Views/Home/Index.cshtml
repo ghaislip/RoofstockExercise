@@ -21,22 +21,33 @@
                     <th data-defaultsign="_19">List Price</th>
                     <th data-defaultsign="_19">Monthly Rent</th>
                     <th data-defaultsign="_19">Gross Yield</th>
+                    <th>Save Property</th>
                 </tr>  
-            </thead>
-            foreach (var item in Model)  
+            </thead>     
+        foreach (var item in Model)  
             {  
+                using (Html.BeginForm("SaveListing", "Home", FormMethod.Post)) {
                 <tr>  
                     <td>@item.Address?.Address1</td>  
                     @if (@item.YearBuilt == null) { <td>N/A</td> }
                     else { <td>@item.YearBuilt</td> }
                     @if (@item.ListPrice == null) { <td>N/A</td> }
-                    else { <td>@item.ListPrice</td> }
+                    else { <td>$@item.ListPrice</td> }
                     @if (@item.MonthlyRent == null) { <td>N/A</td> }
-                    else { <td>@item.MonthlyRent</td> }
+                    else { <td>$@item.MonthlyRent</td> }
                     @if (@item.GrossYield == null) { <td>N/A</td> }
-                    else { <td>@item.GrossYield</td> }
+                    else { <td>@item.GrossYield%</td> }
+                    <td>
+                        @Html.Hidden("listing.Address.Address1", item.Address?.Address1)
+                        @Html.Hidden("listing.YearBuilt", item.YearBuilt)
+                        @Html.Hidden("listing.ListPrice", item.ListPrice)
+                        @Html.Hidden("listing.MonthlyRent", item.MonthlyRent)
+                        @Html.Hidden("listing.GrossYield", item.GrossYield)
+                        <input type="submit" value="Save", name="listing"/>
+                    </td>
                 </tr>
-            }  
+                }
+            }
         }
     </table>
 </div>
