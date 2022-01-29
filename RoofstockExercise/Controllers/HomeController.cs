@@ -18,9 +18,7 @@ namespace RoofstockExercise.Controllers
         {
             var properties = GetProperties();
             var listings = ConvertToListings(properties);
-            Console.WriteLine(listings.Count);
-            Console.WriteLine(listings[0].Address?.Address1);
-            Console.WriteLine(listings[0].GrossYield);
+            //ViewData["listings"] = listings;
             return View(listings);
         }
 
@@ -52,7 +50,7 @@ namespace RoofstockExercise.Controllers
                     var temp = new PropertyListing
                     {
                         Address = property.Address,
-                        MonthlyRent = property.Financial?.MonthlyRent
+                        YearBuilt = property.Physical?.YearBuilt,
                     };
 
                     if (property.Financial?.MonthlyRent != null && property.Financial?.ListPrice != null && property.Financial?.ListPrice != 0)

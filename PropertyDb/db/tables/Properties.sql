@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Property]
+﻿CREATE TABLE [dbo].[Properties]
 (
 	[Id] INT NOT NULL PRIMARY KEY, 
     [Address] NCHAR(30) NOT NULL, 

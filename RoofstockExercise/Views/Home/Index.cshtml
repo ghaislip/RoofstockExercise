@@ -1,8 +1,42 @@
-﻿@{
+﻿@model IEnumerable<RoofstockExercise.Models.PropertyListing>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <table class="table table-bordered table-condensed table-striped table-hover sortable">
+        @if (Model?.Count() == 0)
+        {
+            <tr>  
+                <td colspan="10">No Record's found.</td>  
+            </tr>
+        }
+        else if (Model != null)
+        {
+            <thead>  
+                <tr class="danger">
+                    <th data-defaultsign="desc">Address</th>
+                    <th data-defaultsign="_19">Year Built</th>  
+                    <th data-defaultsign="_19">List Price</th>
+                    <th data-defaultsign="_19">Monthly Rent</th>
+                    <th data-defaultsign="_19">Gross Yield</th>
+                </tr>  
+            </thead>
+            foreach (var item in Model)  
+            {  
+                <tr>  
+                    <td>@item.Address?.Address1</td>  
+                    @if (@item.YearBuilt == null) { <td>N/A</td> }
+                    else { <td>@item.YearBuilt</td> }
+                    @if (@item.ListPrice == null) { <td>N/A</td> }
+                    else { <td>@item.ListPrice</td> }
+                    @if (@item.MonthlyRent == null) { <td>N/A</td> }
+                    else { <td>@item.MonthlyRent</td> }
+                    @if (@item.GrossYield == null) { <td>N/A</td> }
+                    else { <td>@item.GrossYield</td> }
+                </tr>
+            }  
+        }
+    </table>
 </div>

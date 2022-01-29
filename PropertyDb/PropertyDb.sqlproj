@@ -61,7 +61,7 @@
     <Folder Include="publish\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="db\tables\Property.sql" />
+    <Build Include="db\tables\Properties.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="PropertyDb.refactorlog" />
