@@ -48,15 +48,11 @@ namespace RoofstockExercise.Controllers
             {
                 connection.Open();
 
-                var values = SetupValuesQuery(listing);
-                var sql = CreateAddressQuery(values);
+                var sql = CreateAddressQuery(listing);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 Console.WriteLine("Insert called:\n" + sql);
-                cmd.ExecuteNonQuery();
-
-                sql = GetAddressIdQuery(values);
-                Console.WriteLine("Get called:\n" + sql);
-                cmd.ExecuteNonQuery();
+                var id = (int)cmd.ExecuteScalar();
+                Console.WriteLine("ID FOUND: " + id);
 
 
                 connection.Close();
@@ -99,8 +95,9 @@ namespace RoofstockExercise.Controllers
             return list;
         }
 
-        private static string SetupValuesQuery(PropertyListing listing)
+        private static string CreateAddressQuery(PropertyListing listing)
         {
+            var sql = "INSERT INTO Addresses(Address1, Address2, City, Country, County, District, State, Zip, ZipPlus4) VALUES(";
             // Ugly way of doing this but it works
             if (listing.Address?.Address1 == null) { sql += "NULL,"; }
             else { sql += "\'" + listing.Address.Address1 + "\',"; }
@@ -129,17 +126,8 @@ namespace RoofstockExercise.Controllers
             if (listing.Address?.ZipPlus4 == null) { sql += "NULL)"; }
             else { sql += listing.Address.ZipPlus4 + ")"; }
 
-            return sql;
-        }
+            sql += "; SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
-        private static string CreateAddressQuery(string values)
-        {
-            return "INSERT INTO Addresses(Address1, Address2, City, Country, County, District, State, Zip, ZipPlus4) VALUES(" + values;
-        }
-
-        private static string GetAddressIdQuery(string values)
-        {
-            var sql = "SELECT Id FROM Addresses WHERE ";
             return sql;
         }
     }
