@@ -2,6 +2,7 @@
 using RoofstockExercise.Models;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using System.Data.SqlClient;
 
 namespace RoofstockExercise.Controllers
 {
@@ -34,8 +35,7 @@ namespace RoofstockExercise.Controllers
         }
 
         [HttpPost]
-        [ActionName("SaveListing")]
-        public IActionResult Index(PropertyListing listing)
+        public IActionResult SaveListing(PropertyListing listing)
         {
             Console.WriteLine("TEST");
             Console.WriteLine(listing.YearBuilt);
@@ -43,6 +43,25 @@ namespace RoofstockExercise.Controllers
             Console.WriteLine(listing.ListPrice);
             Console.WriteLine(listing.MonthlyRent);
             Console.WriteLine(listing.GrossYield);
+
+            using(SqlConnection connection = new SqlConnection("Data Source=DESKTOP-273GM3L;Database=PropertyDB;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False"))
+            {
+                connection.Open();
+
+                var values = SetupValuesQuery(listing);
+                var sql = CreateAddressQuery(values);
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                Console.WriteLine("Insert called:\n" + sql);
+                cmd.ExecuteNonQuery();
+
+                sql = GetAddressIdQuery(values);
+                Console.WriteLine("Get called:\n" + sql);
+                cmd.ExecuteNonQuery();
+
+
+                connection.Close();
+            }
+
             return RedirectToAction("Index");
         }
 
@@ -78,6 +97,50 @@ namespace RoofstockExercise.Controllers
                 }
             }
             return list;
+        }
+
+        private static string SetupValuesQuery(PropertyListing listing)
+        {
+            // Ugly way of doing this but it works
+            if (listing.Address?.Address1 == null) { sql += "NULL,"; }
+            else { sql += "\'" + listing.Address.Address1 + "\',"; }
+
+            if (listing.Address?.Address2 == null) { sql += "NULL,"; }
+            else { sql += "\'" + listing.Address.Address2 + "\',"; }
+
+            if (listing.Address?.City == null) { sql += "NULL,"; }
+            else { sql += "\'" + listing.Address.City + "\',"; }
+
+            if (listing.Address?.Country == null) { sql += "NULL,"; }
+            else { sql += "\'" + listing.Address.Country + "\',"; }
+
+            if (listing.Address?.County == null) { sql += "NULL,"; }
+            else { sql += "\'" + listing.Address.County + "\',"; }
+
+            if (listing.Address?.District == null) { sql += "NULL,"; }
+            else { sql += "\'" + listing.Address.District + "\',"; }
+
+            if (listing.Address?.State == null) { sql += "NULL,"; }
+            else { sql += "\'" + listing.Address.State + "\',"; }
+
+            if (listing.Address?.Zip == null) { sql += "NULL,"; }
+            else { sql += listing.Address.Zip + ","; }
+
+            if (listing.Address?.ZipPlus4 == null) { sql += "NULL)"; }
+            else { sql += listing.Address.ZipPlus4 + ")"; }
+
+            return sql;
+        }
+
+        private static string CreateAddressQuery(string values)
+        {
+            return "INSERT INTO Addresses(Address1, Address2, City, Country, County, District, State, Zip, ZipPlus4) VALUES(" + values;
+        }
+
+        private static string GetAddressIdQuery(string values)
+        {
+            var sql = "SELECT Id FROM Addresses WHERE ";
+            return sql;
         }
     }
 }

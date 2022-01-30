@@ -3,16 +3,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>PropertyDb</Name>
+    <Name>PropertyDB</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{837237b8-c04e-4752-bed8-98cde6614eee}</ProjectGuid>
+    <ProjectGuid>{e6b720c9-8bcb-4376-a29b-043f3960bde4}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>PropertyDb</RootNamespace>
-    <AssemblyName>PropertyDb</AssemblyName>
+    <RootNamespace>PropertyDB</RootNamespace>
+    <AssemblyName>PropertyDB</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -56,17 +56,13 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="db" />
-    <Folder Include="db\tables" />
-    <Folder Include="publish\" />
+    <Folder Include="Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="db\tables\Properties.sql" />
+    <Build Include="Tables\Properties.sql" />
+    <Build Include="Tables\Addresses.sql" />
   </ItemGroup>
   <ItemGroup>
-    <RefactorLog Include="PropertyDb.refactorlog" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="publish\PropertyDb.publish.xml" />
+    <None Include="PropertyDB.publish.xml" />
   </ItemGroup>
 </Project>

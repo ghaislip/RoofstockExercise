@@ -39,6 +39,14 @@
                     else { <td>@item.GrossYield%</td> }
                     <td>
                         @Html.Hidden("listing.Address.Address1", item.Address?.Address1)
+                        @Html.Hidden("listing.Address.Address2", item.Address?.Address2)
+                        @Html.Hidden("listing.Address.City", item.Address?.City)
+                        @Html.Hidden("listing.Address.Country", item.Address?.Country)
+                        @Html.Hidden("listing.Address.County", item.Address?.County)
+                        @Html.Hidden("listing.Address.District", item.Address?.District)
+                        @Html.Hidden("listing.Address.State", item.Address?.State)
+                        @Html.Hidden("listing.Address.Zip", item.Address?.Zip)
+                        @Html.Hidden("listing.Address.ZipPlus4", item.Address?.ZipPlus4)
                         @Html.Hidden("listing.YearBuilt", item.YearBuilt)
                         @Html.Hidden("listing.ListPrice", item.ListPrice)
                         @Html.Hidden("listing.MonthlyRent", item.MonthlyRent)
