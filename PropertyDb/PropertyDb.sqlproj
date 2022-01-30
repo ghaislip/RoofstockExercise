@@ -65,4 +65,7 @@
   <ItemGroup>
     <None Include="PropertyDB.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="PropertyDB.refactorlog" />
+  </ItemGroup>
 </Project>

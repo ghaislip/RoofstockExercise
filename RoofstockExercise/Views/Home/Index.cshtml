@@ -28,7 +28,7 @@
             {  
                 using (Html.BeginForm("SaveListing", "Home", FormMethod.Post)) {
                 <tr>  
-                    <td>@item.Address?.Address1</td>  
+                    <td>@item.Address?.Address1, @item.Address?.City @item.Address?.State, @item.Address?.Zip</td>  
                     @if (@item.YearBuilt == null) { <td>N/A</td> }
                     else { <td>@item.YearBuilt</td> }
                     @if (@item.ListPrice == null) { <td>N/A</td> }
@@ -36,7 +36,7 @@
                     @if (@item.MonthlyRent == null) { <td>N/A</td> }
                     else { <td>$@item.MonthlyRent</td> }
                     @if (@item.GrossYield == null) { <td>N/A</td> }
-                    else { <td>@item.GrossYield%</td> }
+                    else { <td>@item.GrossYield?.ToString("0.00")%</td> }
                     <td>
                         @Html.Hidden("listing.Address.Address1", item.Address?.Address1)
                         @Html.Hidden("listing.Address.Address2", item.Address?.Address2)

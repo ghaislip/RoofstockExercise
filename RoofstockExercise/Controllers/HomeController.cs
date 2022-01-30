@@ -37,23 +37,24 @@ namespace RoofstockExercise.Controllers
         [HttpPost]
         public IActionResult SaveListing(PropertyListing listing)
         {
-            Console.WriteLine("TEST");
-            Console.WriteLine(listing.YearBuilt);
-            Console.WriteLine(listing.Address?.Address1);
-            Console.WriteLine(listing.ListPrice);
-            Console.WriteLine(listing.MonthlyRent);
-            Console.WriteLine(listing.GrossYield);
-
             using(SqlConnection connection = new SqlConnection("Data Source=DESKTOP-273GM3L;Database=PropertyDB;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False"))
             {
                 connection.Open();
 
+                // TODO: Add try catch exception
+                // insert address, return id
                 var sql = CreateAddressQuery(listing);
                 SqlCommand cmd = new SqlCommand(sql, connection);
                 Console.WriteLine("Insert called:\n" + sql);
                 var id = (int)cmd.ExecuteScalar();
-                Console.WriteLine("ID FOUND: " + id);
+                Console.WriteLine("INSERTED ID: " + id);
 
+                // insert property
+                sql = CreatePropertyQuery(listing, id);
+                cmd = new SqlCommand(sql, connection);
+                Console.WriteLine("Insert called:\n" + sql);
+                id = (int)cmd.ExecuteScalar();
+                Console.WriteLine("INSERTED ID: " + id);
 
                 connection.Close();
             }
@@ -97,8 +98,9 @@ namespace RoofstockExercise.Controllers
 
         private static string CreateAddressQuery(PropertyListing listing)
         {
-            var sql = "INSERT INTO Addresses(Address1, Address2, City, Country, County, District, State, Zip, ZipPlus4) VALUES(";
             // Ugly way of doing this but it works
+            var sql = "INSERT INTO Addresses(Address1, Address2, City, Country, County, District, State, Zip, ZipPlus4) VALUES(";
+
             if (listing.Address?.Address1 == null) { sql += "NULL,"; }
             else { sql += "\'" + listing.Address.Address1 + "\',"; }
 
@@ -125,6 +127,29 @@ namespace RoofstockExercise.Controllers
 
             if (listing.Address?.ZipPlus4 == null) { sql += "NULL)"; }
             else { sql += listing.Address.ZipPlus4 + ")"; }
+
+            sql += "; SELECT CAST(SCOPE_IDENTITY() AS INT)";
+
+            return sql;
+        }
+
+        private static string CreatePropertyQuery(PropertyListing listing, int id)
+        {
+            // Ugly way of doing this but it works
+            var sql = "INSERT INTO Properties(Address, YearBuilt, ListPrice, MonthlyRent, GrossYield) VALUES(";
+            sql += id + ",";
+
+            if (listing.YearBuilt == null) { sql += "NULL,"; }
+            else { sql += listing.YearBuilt + ","; }
+
+            if (listing.ListPrice == null) { sql += "NULL,"; }
+            else { sql += listing.ListPrice + ","; }
+
+            if (listing.MonthlyRent == null) { sql += "NULL,"; }
+            else { sql += listing.MonthlyRent + ","; }
+
+            if (listing.GrossYield == null) { sql += "NULL,"; }
+            else { sql += listing.GrossYield + ")"; }
 
             sql += "; SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
