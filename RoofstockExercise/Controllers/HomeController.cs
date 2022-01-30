@@ -40,21 +40,26 @@ namespace RoofstockExercise.Controllers
             using(SqlConnection connection = new SqlConnection("Data Source=DESKTOP-273GM3L;Database=PropertyDB;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False"))
             {
                 connection.Open();
+                try
+                {
+                    // TODO: Add try catch exception
+                    // insert address, return id
+                    var sql = CreateAddressQuery(listing);
+                    SqlCommand cmd = new SqlCommand(sql, connection);
+                    Console.WriteLine("Insert called:\n" + sql);
+                    var id = (int)cmd.ExecuteScalar();
+                    Console.WriteLine("INSERTED ID: " + id);
 
-                // TODO: Add try catch exception
-                // insert address, return id
-                var sql = CreateAddressQuery(listing);
-                SqlCommand cmd = new SqlCommand(sql, connection);
-                Console.WriteLine("Insert called:\n" + sql);
-                var id = (int)cmd.ExecuteScalar();
-                Console.WriteLine("INSERTED ID: " + id);
-
-                // insert property
-                sql = CreatePropertyQuery(listing, id);
-                cmd = new SqlCommand(sql, connection);
-                Console.WriteLine("Insert called:\n" + sql);
-                id = (int)cmd.ExecuteScalar();
-                Console.WriteLine("INSERTED ID: " + id);
+                    // insert property
+                    sql = CreatePropertyQuery(listing, id);
+                    cmd = new SqlCommand(sql, connection);
+                    Console.WriteLine("Insert called:\n" + sql);
+                    id = (int)cmd.ExecuteScalar();
+                    Console.WriteLine("INSERTED ID: " + id);
+                } catch (SqlException ex)
+                {
+                    Console.WriteLine("Exception caught: " + ex.ToString());
+                }
 
                 connection.Close();
             }
@@ -148,7 +153,7 @@ namespace RoofstockExercise.Controllers
             if (listing.MonthlyRent == null) { sql += "NULL,"; }
             else { sql += listing.MonthlyRent + ","; }
 
-            if (listing.GrossYield == null) { sql += "NULL,"; }
+            if (listing.GrossYield == null) { sql += "NULL)"; }
             else { sql += listing.GrossYield + ")"; }
 
             sql += "; SELECT CAST(SCOPE_IDENTITY() AS INT)";
