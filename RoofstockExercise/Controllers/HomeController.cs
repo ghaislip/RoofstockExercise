@@ -42,7 +42,6 @@ namespace RoofstockExercise.Controllers
                 connection.Open();
                 try
                 {
-                    // TODO: Add try catch exception
                     // insert address, return id
                     var sql = CreateAddressQuery(listing);
                     SqlCommand cmd = new SqlCommand(sql, connection);
