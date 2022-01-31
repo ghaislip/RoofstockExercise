@@ -17,7 +17,7 @@
 Example: `Data Source = MYDESKTOP;Database=PropertyDB;Integrated Security = True; Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout = 60; Encrypt=False;TrustServerCertificate=False`
 
 4. Run the project via Visual Studio
-5. 
+
 ### Work Flow
 1. Installed VS Studio and MS SQL Server Management Studio
 2. Generated an ASP.NET Core Web App (Model-View-Controller) 
