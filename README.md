@@ -15,7 +15,7 @@
 ## How to Install
 1. Download the project and import to Visual Studio
 2. Add the Newtonsoft.Json and System.Data.SqlClient NuGet Packages
-3. Right click the `PropertyDB` project and select publish. Select your local machine and name the database `PropertyDB`, then select publish.
+3. Right click the `PropertyDB` project and select publish. Select your local machine and name the database `PropertyDB`, save the profile, then select publish.
 4. Grab the database connection string under the properties of `PropertyDB/PropertyDB.publish.xml`, set the database field to `PropertyDB`, and set `ConnectionString` in `Controllers/HomeController.cs` to that value. Example:
 
 ```
