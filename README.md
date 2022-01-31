@@ -43,6 +43,11 @@ INSERT INTO Properties(Address, YearBuilt, ListPrice, MonthlyRent, GrossYield) V
 
 10. Updated table format in view
 
+## Biggest challenges
+- Setting up the connection to the SQL database
+- Getting the save button to return the proper data
+- Handling null values
+
 ### Potential Improvements
 - Message box on Save/Failure
 - Searchable table
