@@ -45,7 +45,7 @@ INSERT INTO Properties(Address, YearBuilt, ListPrice, MonthlyRent, GrossYield) V
 
 ## Biggest challenges
 - Setting up the connection to the SQL database
-- Getting the save button to return the proper data
+- Getting the save button to return the proper data to the controller
 - Handling null values
 
 ## Potential Improvements
