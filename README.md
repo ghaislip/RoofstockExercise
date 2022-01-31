@@ -9,7 +9,7 @@
 - Bootstrap
 - Google Chrome
 
-### How to install
+### How to Install
 1. Download the project and import to Visual Studio
 2. Add the Newtonsoft.Json and System.Data.SqlClient NuGet Packages
 3. Run `PropertyDB/PropertyDB.publish.xml` to setup the database for your local machine
