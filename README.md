@@ -35,7 +35,7 @@ Data Source = MYDESKTOP;Database=PropertyDB;Integrated Security = True; Persist 
 ```
 // Insert to address, return its id -> insert to Properties using the address id
 INSERT INTO Addresses(Address1, Address2, City, Country, County, District, State, Zip, ZipPlus4) VALUES(...) ; SELECT CAST(SCOPE_IDENTITY() AS INT)
-INSERT INTO Properties(Address, YearBuilt, ListPrice, MonthlyRent, GrossYield) VALUES(...)
+INSERT INTO Properties(Address, YearBuilt, ListPrice, MonthlyRent, GrossYield) VALUES(address_id, ...)
 ```
 
 10. Updated table format in view
