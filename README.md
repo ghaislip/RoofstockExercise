@@ -6,6 +6,7 @@
 - SQL Server Database
 - Newtonsoft.Json
 - System.Data.SqlClient
+- Bootstrap
 - Google Chrome
 ### How to install
 1. Download the project and import to Visual Studio
