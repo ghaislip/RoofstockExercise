@@ -30,7 +30,7 @@ Data Source = MYDESKTOP;Database=PropertyDB;Integrated Security = True; Persist 
 6. Added save button to pass the chosen listing back to the controller
 7. Generated a SQL Server Database project and added the Properties and Addresses tables
 8. Published the tables to local machine and connected via MS SQL Server Management Studio
-9. Used System.Data.SqlClient to connect to the database with this logic:
+9. Used System.Data.SqlClient to update the database with this logic:
 
 ```
 // Insert to address, return its id -> insert to Properties using the address id
