@@ -91,7 +91,7 @@ namespace RoofstockExercise.Controllers
                     {
                         temp.MonthlyRent = Math.Round(property.Financial.MonthlyRent,2);
                         temp.ListPrice = Math.Round(property.Financial.ListPrice,2);
-                        var gross = temp.MonthlyRent * 12 / temp.ListPrice;
+                        var gross = temp.MonthlyRent * 12 / temp.ListPrice * 100;
                         if (gross != null) temp.GrossYield = Math.Round((decimal)gross,2);
                     }
                     
