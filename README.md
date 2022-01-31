@@ -28,8 +28,13 @@ Example: `Data Source = MYDESKTOP;Database=PropertyDB;Integrated Security = True
 7. Generated a SQL Server Database project and added the Properties and Addresses tables
 8. Published the tables to local machine and connected via MS SQL Server Management Studio
 9. Used System.Data.SqlClient to connect to the database with this logic:
->> INSERT INTO Addresses(Address1, Address2, City, Country, County, District, State, Zip, ZipPlus4) VALUES(...) ; SELECT CAST(SCOPE_IDENTITY() AS INT)
->> "INSERT INTO Properties(Address, YearBuilt, ListPrice, MonthlyRent, GrossYield) VALUES(...)
+
+```
+// Insert to address, return its id -> insert to Properties using the address id
+INSERT INTO Addresses(Address1, Address2, City, Country, County, District, State, Zip, ZipPlus4) VALUES(...) ; SELECT CAST(SCOPE_IDENTITY() AS INT)
+INSERT INTO Properties(Address, YearBuilt, ListPrice, MonthlyRent, GrossYield) VALUES(...)
+```
+
 10. Updated table format in view
 
 ### Potential Improvements
