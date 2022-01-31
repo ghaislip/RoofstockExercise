@@ -1,5 +1,8 @@
 # RoofstockExercise
-### Tech used
+
+### [Demo screen capture](https://github.com/ghaislip/RoofstockExercise/blob/master/demo.mp4)
+
+## Tech used
 - Visual Studio 2022
 - MS SQL Server Management Studio 18
 - ASP.NET Core Web App (Model-View-Controller)
@@ -9,7 +12,7 @@
 - Bootstrap
 - Google Chrome
 
-### How to Install
+## How to Install
 1. Download the project and import to Visual Studio
 2. Add the Newtonsoft.Json and System.Data.SqlClient NuGet Packages
 3. Run `PropertyDB/PropertyDB.publish.xml` to setup the database for your local machine
@@ -21,7 +24,7 @@ Data Source = MYDESKTOP;Database=PropertyDB;Integrated Security = True; Persist 
 
 4. Run the project via Visual Studio
 
-### Work Flow
+## Work Flow
 1. Installed VS Studio and MS SQL Server Management Studio
 2. Generated an ASP.NET Core Web App (Model-View-Controller) 
 3. Added models Address, Financial, Physical, Property, Properties, and Listing
@@ -40,7 +43,12 @@ INSERT INTO Properties(Address, YearBuilt, ListPrice, MonthlyRent, GrossYield) V
 
 10. Updated table format in view
 
-### Potential Improvements
+## Biggest challenges
+- Setting up the connection to the SQL database
+- Getting the save button to return the proper data to the controller
+- Handling null values
+
+## Potential Improvements
 - Message box on Save/Failure
 - Searchable table
 - Sortable table
