@@ -1,4 +1,7 @@
 # RoofstockExercise
+
+[Demo screen capture](https://github.com/ghaislip/RoofstockExercise/blob/master/demo.mp4)
+
 ### Tech used
 - Visual Studio 2022
 - MS SQL Server Management Studio 18
