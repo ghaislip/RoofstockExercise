@@ -14,5 +14,27 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #f8f9fa;
+}
+
+table {
+    background-color: #ffffff;
+}
+
+footer {
+    background-color: #f8f9fa;
+}
+
+th {
+    text-align: left;
+}
+
+#field {
+    text-align: left;
+    vertical-align: middle;
+}
+
+#save-btn {
+    vertical-align: middle;
 }

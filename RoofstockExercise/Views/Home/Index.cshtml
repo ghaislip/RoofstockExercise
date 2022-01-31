@@ -4,8 +4,9 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <table class="table table-bordered table-condensed table-striped table-hover sortable">
+    <h1 class="display-5">Roofstock Full-Stack Exercise</h1>
+    <br />
+    <table class="table table-bordered table-striped table-bordered table-hover table-sm">
         @if (Model?.Count() == 0)
         {
             <tr>  
@@ -15,29 +16,29 @@
         else if (Model != null)
         {
             <thead>  
-                <tr class="danger">
-                    <th data-defaultsign="desc">Address</th>
-                    <th data-defaultsign="_19">Year Built</th>  
-                    <th data-defaultsign="_19">List Price</th>
-                    <th data-defaultsign="_19">Monthly Rent</th>
-                    <th data-defaultsign="_19">Gross Yield</th>
+                <tr class="table-dark">
+                    <th>Address</th>
+                    <th>Year Built</th>  
+                    <th>List Price</th>
+                    <th>Monthly Rent</th>
+                    <th>Gross Yield</th>
                     <th>Save Property</th>
                 </tr>  
             </thead>     
         foreach (var item in Model)  
             {  
                 using (Html.BeginForm("SaveListing", "Home", FormMethod.Post)) {
-                <tr>  
-                    <td>@item.Address?.Address1, @item.Address?.City @item.Address?.State, @item.Address?.Zip</td>  
-                    @if (@item.YearBuilt == null) { <td>N/A</td> }
-                    else { <td>@item.YearBuilt</td> }
-                    @if (@item.ListPrice == null) { <td>N/A</td> }
-                    else { <td>$@item.ListPrice</td> }
-                    @if (@item.MonthlyRent == null) { <td>N/A</td> }
-                    else { <td>$@item.MonthlyRent</td> }
-                    @if (@item.GrossYield == null) { <td>N/A</td> }
-                    else { <td>@item.GrossYield?.ToString("0.00")%</td> }
-                    <td>
+                <tr>
+                    <td id="field">@item.Address?.Address1, @item.Address?.City @item.Address?.State, @item.Address?.Zip</td>  
+                    @if (@item.YearBuilt == null) { <td id="field">N/A</td> }
+                    else { <td id="field">@item.YearBuilt</td> }
+                    @if (@item.ListPrice == null) { <td id="field">N/A</td> }
+                    else { <td id="field">$@item.ListPrice</td> }
+                    @if (@item.MonthlyRent == null) { <td id="field">N/A</td> }
+                    else { <td id="field">$@item.MonthlyRent</td> }
+                    @if (@item.GrossYield == null) { <td id="field">N/A</td> }
+                    else { <td id="field">@item.GrossYield?.ToString("0.00")%</td> }
+                    <td id="save-btn">
                         @Html.Hidden("listing.Address.Address1", item.Address?.Address1)
                         @Html.Hidden("listing.Address.Address2", item.Address?.Address2)
                         @Html.Hidden("listing.Address.City", item.Address?.City)
@@ -51,7 +52,7 @@
                         @Html.Hidden("listing.ListPrice", item.ListPrice)
                         @Html.Hidden("listing.MonthlyRent", item.MonthlyRent)
                         @Html.Hidden("listing.GrossYield", item.GrossYield)
-                        <input type="submit" value="Save", name="listing"/>
+                        <input value="Save" name="listing" type="submit" class="btn btn-success"/>
                     </td>
                 </tr>
                 }

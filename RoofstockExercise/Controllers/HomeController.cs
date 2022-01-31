@@ -10,6 +10,7 @@ namespace RoofstockExercise.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private List<PropertyListing>? Listings;
+        private readonly string ConnectionSting = "Data Source=DESKTOP-273GM3L;Database=PropertyDB;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -37,7 +38,7 @@ namespace RoofstockExercise.Controllers
         [HttpPost]
         public IActionResult SaveListing(PropertyListing listing)
         {
-            using(SqlConnection connection = new SqlConnection("Data Source=DESKTOP-273GM3L;Database=PropertyDB;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False"))
+            using(SqlConnection connection = new SqlConnection(ConnectionSting))
             {
                 connection.Open();
                 try
