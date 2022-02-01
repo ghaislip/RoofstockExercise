@@ -52,4 +52,5 @@ INSERT INTO Properties(Address, YearBuilt, ListPrice, MonthlyRent, GrossYield) V
 - Message box on Save/Failure
 - Searchable table
 - Sortable table
+- Cache downloaded json locally
 - Download table as csv/json
