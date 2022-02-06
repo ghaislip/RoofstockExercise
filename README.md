@@ -3,8 +3,9 @@
 ### [Demo screen capture](https://github.com/ghaislip/RoofstockExercise/blob/master/demo.mp4)
 
 ## Tech used
-- Visual Studio 2022
+- Visual Studio 2022 Community Edition
 - MS SQL Server Management Studio 18
+- SQL Server 2019 Developer Edition
 - ASP.NET Core Web App (Model-View-Controller)
 - SQL Server Database
 - Newtonsoft.Json
@@ -25,7 +26,7 @@ Data Source = MYDESKTOP;Database=PropertyDB;Integrated Security = True; Persist 
 4. Run the project via Visual Studio
 
 ## Work Flow
-1. Installed VS Studio and MS SQL Server Management Studio
+1. Installed VS Studio, MS SQL Server Management Studio, and SQL Server
 2. Generated an ASP.NET Core Web App (Model-View-Controller) 
 3. Added models Address, Financial, Physical, Property, Properties, and Listing
 4. Added json download and conversion to Listings (via Newtonson.Json), then passed them to the view
